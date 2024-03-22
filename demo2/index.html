@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style type="text/tailwindcss">
+        body{
+            @apply pt-8;
+        }
+        .card{
+            @apply border rounded-lg bg-teal-300 border-teal-600 w-9/12 m-auto p-5 leading-10 text-lg;
+        }
+        .interactive{
+            @apply text-center w-9/12 m-auto mt-4;
+        }
+        .interactive input{
+            @apply border border-teal-300 h-10 block my-6;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <p id="firstName">123</p>
+        <p id="lastName">456</p>
+        <p id="age">22</p>
+    </div>
+    <!-- 数据处理完成后，可以添加交互 -->
+    <div class="interactive">
+        <input type="text" oninput="user.name=this.value" placeholder="输入名字同步修改"/>
+        <input type="date" onchange="user.birth = this.value"/>
+    </div>
+    <script src="./euv.js"></script>
+    <script src="./index.js"></script>
+</body>
+</html>

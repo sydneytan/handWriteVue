@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VUE demo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style type="text/tailwindcss">
+        body{
+            @apply pt-8;
+        }
+        .container{
+            @apply border rounded-lg border-gray-400 w-9/12 m-auto text-center p-5;
+        }
+        .goodItem{
+            @apply flex items-center justify-between mt-4;
+        }
+        .btn{
+            @apply flex items-center text-gray-800;
+        }
+        .btn .deBtn{
+            @apply border border-gray-400 rounded-full leading-5 size-6 not-italic text-gray-400 hidden;
+        }
+        .btn span{
+            @apply px-3 hidden;
+        }
+        .btn .inBtn{
+            @apply bg-blue-600 rounded-full text-white leading-5 size-6 not-italic;
+        }
+        .active .btn .deBtn{
+            @apply block;
+        }
+        .active .btn span{
+            @apply block;
+        }
+        .footer{
+            @apply text-center m-auto size-12 rounded-full bg-gray-500 p-2 relative;
+        }
+        .footer span{
+            @apply hidden absolute top-0 border border-white text-xs right-0 size-5 bg-red-500 rounded-full text-center text-white leading-4;
+        }
+        .footer.active{
+            @apply bg-blue-600;
+        }
+        .active span{
+            @apply block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="font-bold pb-2">{{title}}</h1>
+        <div class="goodList mb-8">
+            <div v-for="item in goods" class="goodItem" :class="{active:item.choose>0}">
+                <div class="goodsName">{{item.name}}</div>
+                <div class="btn">
+                    <i class="deBtn" @click="item.choose--">-</i>
+                    <span>{{item.choose}}</span>
+                    <i class="inBtn" @click="item.choose++">+</i>
+                </div>
+            </div>
+        </div>
+        <div class="footer" :class="{active:count>0}">
+            <span>{{count}}</span>
+            <img src="./assets/fa-shopping-cart.png">       
+        </div>
+    </div>
+    <script src="./js/data.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="./js/index.js"></script>
+</body>
+</html>
